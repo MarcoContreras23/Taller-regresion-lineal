@@ -1,0 +1,11 @@
+{
+    "x": {
+      "nombre": "horizontal",
+      "dato": [123, 167, 146, 151, 198]
+    },
+    "y": {
+      "nombre": "vertical",
+      "dato": [64, 61, 72, 58, 56]
+    },
+    "datoAPredecir": 153
+  }

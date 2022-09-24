@@ -20,7 +20,7 @@ class GUI:
         self.frameBtn.pack(side=tk.LEFT, expand=True, padx=20)
         self.frameGraph.pack(side=tk.RIGHT, expand=True)
     
-    def start(self):
+    def inicio(self):
         self.root.title("Regresión Lineal")
         self.root.geometry("770x450")
         self.root.configure(bg="white")
@@ -28,17 +28,17 @@ class GUI:
         loadLabel = tk.Label(self.frameBtn, text="Seleccione el archivo JSON para operar con sus datos", bg="white", font="Arial 10")
         loadLabel.pack()
 
-        loadFileBtn = tk.Button(self.frameBtn, text="Load File", command=self.readFile)
+        loadFileBtn = tk.Button(self.frameBtn, text="Cargar archivo", command=self.leerArchivo)
         loadFileBtn.pack()
 
         graphLabel = tk.Label(self.frameGraph, text="Gráfico de Regresión Lineal", font="Arial 15 bold", bg="white")
         graphLabel.pack(pady=0)
 
-        self.graph("", "", [], [], regresionLineal([], []))
+        self.graficar("", "", [], [], regresionLineal([], []))
 
         self.root.mainloop()
 
-    def readFile(self):
+    def leerArchivo(self):
         path = askopenfile(mode='r', filetypes=[('JSON Files', '*.json')])
         
         if path is not None:
@@ -55,13 +55,13 @@ class GUI:
         xData.append(datosAPredecir)
         yData.append(prediccionDeDatos)
 
-        self.graph(xName, yName, xData, yData, regresion)
+        self.graficar(xName, yName, xData, yData, regresion)
 
-    def graph(self, xName, yName, xData, yData, regresionLineal):
+    def graficar(self, xName, yName, xData, yData, regresionLineal):
         figure = plt.Figure(figsize=(5, 4), dpi=100)
-        ax = figure.add_subplot(111)
+        # ax = figure.add_subplot(111)
         canvas = figureCanvas(figure, self.frameGraph)
-        ax.clear()
+        # ax.clear()
         canvas.draw()
         canvas.get_tk_widget().pack()
         self.canvas = canvas

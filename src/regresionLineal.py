@@ -18,10 +18,8 @@ class regresionLineal:
     def calcularDatos(self):
         self.x = sum(self.datosX)
         self.y = sum(self.datosY)
-        for i in range(len(self.xData)):
-            self.xy = sum(self.datosX[i] * self.datosY[i])
-        for i in range(len(self.xData)):
-            self.x2 = sum(self.datosX[i] * self.datosY[i])
+        self.xy = sum([self.datosX[i] * self.datosY[i] for i in range(len(self.datosX))])
+        self.x2 = sum([self.datosX[i] * self.datosX[i] for i in range(len(self.datosX))])
 
     def calcularPendiente(self):
         n = len(self.datosX)
@@ -35,7 +33,5 @@ class regresionLineal:
         return self.pendiente * datoPredecir + self.intercepcion
 
     def listaPrediccion(self, datoPredecir):
-        for data in datoPredecir:
-            list = self.pendiente * data + self.intercepcion
-        return list
+        return [self.pendiente * data + self.intercepcion for data in datoPredecir]
       
